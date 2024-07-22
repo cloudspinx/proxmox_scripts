@@ -16,6 +16,7 @@ fi
 # Stop the container
 echo "Stopping container $CONTAINER_ID..."
 pct stop $CONTAINER_ID
+echo ""
 
 # Path to the container's configuration file
 CONFIG_FILE="/etc/pve/lxc/$CONTAINER_ID.conf"
@@ -32,11 +33,13 @@ if ! grep -q "lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file" "
 fi
 
 # Start the container
+echo ""
 echo "Starting container $CONTAINER_ID..."
 pct start $CONTAINER_ID
 
 # Verify the TUN device inside the container
 echo "Verifying /dev/net/tun inside the container..."
+echo ""
 pct exec $CONTAINER_ID -- sh -c "ls -lh /dev/net/tun"
 if [ $? -eq 0 ]; then
   echo "Success: /dev/net/tun exists inside the container."
