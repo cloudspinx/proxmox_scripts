@@ -2,7 +2,7 @@
 
 # List all containers with their IDs and names
 echo "Available containers:"
-pct list | awk '{print $1, $2}' | tail -n +2  # Skip the header
+pct list
 
 # Prompt user to enter a container ID
 read -p "Enter the container ID you want to modify: " CONTAINER_ID
