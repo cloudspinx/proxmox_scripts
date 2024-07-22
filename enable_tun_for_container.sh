@@ -37,6 +37,5 @@ pct start $CONTAINER_ID
 
 # Verify the TUN device inside the container
 echo "Verifying /dev/net/tun inside the container..."
-pct enter $CONTAINER_ID -- ls -l /dev/net/tun
-
+pct exec $CONTAINER_ID -- sh -c "ls -lh /dev/net/tun"
 echo "Done."
