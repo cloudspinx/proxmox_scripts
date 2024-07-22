@@ -38,4 +38,9 @@ pct start $CONTAINER_ID
 # Verify the TUN device inside the container
 echo "Verifying /dev/net/tun inside the container..."
 pct exec $CONTAINER_ID -- sh -c "ls -lh /dev/net/tun"
+if [ $? -eq 0 ]; then
+  echo "Success: /dev/net/tun exists inside the container."
+else
+  echo "Error: /dev/net/tun does not exist inside the container."
+fi
 echo "Done."
